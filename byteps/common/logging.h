@@ -105,13 +105,13 @@ class LogMessageFatal : public LogMessage {
 LogLevel MinLogLevelFromEnv();
 bool LogTimeFromEnv();
 
-#define ASSERTF(condition, message) \
-    do { \
-        if (! (condition)) { \
-            std::cerr << "Assertion `" #condition "` failed in " << __FILE__ \
+#define ASSERTF(condition, message)                                            \
+    do {                                                                       \
+        if (! (condition)) {                                                   \
+            std::cerr << "Assertion `" #condition "` failed in " << __FILE__   \
                       << " line " << __LINE__ << ": " << message << std::endl; \
-            std::terminate(); \
-        } \
+            std::terminate();                                                  \
+        }                                                                      \
     } while (false)
 
 }  // namespace common

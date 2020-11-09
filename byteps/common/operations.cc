@@ -166,7 +166,6 @@ Status EnqueueTensor(BPSContext &context, std::shared_ptr<Tensor> input,
                      const int priority, const int version,
                      StatusCallback callback,
                      std::shared_ptr<std::vector<QueueType>> queue_list) {
-  int my_rank = common::byteps_rank();
   if (BytePSGlobal::ShouldShutdown()) {
     return Status::OK();
   }
@@ -252,7 +251,6 @@ Status EnqueueTensor(BPSContext &context, std::shared_ptr<Tensor> input,
 }
 
 void InitTensor(BPSContext &context, size_t size, int dtype, void *cpubuff) {
-  int my_rank = common::byteps_rank();
   std::lock_guard<std::mutex> lock(context.init_mutex);
   if (context.initialized) {
     return;
